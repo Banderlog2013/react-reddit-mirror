@@ -1,0 +1,13 @@
+.example {
+  margin-top: 100px;
+  color: #6195ed;
+  font-family: Impact;
+  font-weight: bold;
+  width: 100%;
+  text-align: center;
+}
+
+.message {
+  color:green;
+  text-align: center;
+}
