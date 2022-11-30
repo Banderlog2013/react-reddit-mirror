@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './searchblock.css';
+import styles from './searchBlock.css';
 
 export function SearchBlock() {
   return (
