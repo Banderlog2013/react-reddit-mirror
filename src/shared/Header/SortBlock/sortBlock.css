@@ -3,7 +3,7 @@
     padding: 11px 20px;
     border-radius: 7px;
     margin: 0 0 20px;
-  }
+}
   
   @media all and (min-width: 1024px) {
     .sortBlock {
@@ -12,4 +12,4 @@
       margin: 0;
       border-radius: 0;
     }
-  }
+}
