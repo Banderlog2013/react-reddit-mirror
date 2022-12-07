@@ -22,9 +22,12 @@
     position: absolute;
     right: 0;
     top: 10px;
+    width: 157px;
+    height: 229px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     border-radius: 3px;
     background-color: var(--white);
+    z-index: 1;
 }
 
 .closeButton {
@@ -58,3 +61,6 @@
     }
 }
 
+.menuItemsList {
+    padding: 0 20px;
+}
