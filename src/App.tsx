@@ -33,22 +33,7 @@ function AppComponent() {
             <Header />
             <Content>
                 <CardsList />
-                {/* <button onClick={handleAdd}>Add Element</button> */}
-                <ul>
-                    <GenericList list={list.map(merge({onClick: handleItemClick}))}/>
-                </ul>
-                
-                    <div style={{padding: 20}}> 
-                        <br />
-                        <Dropdown 
-                            onClose={() => console.log('closed')} 
-                            onOpen={() => console.log('opened')} 
-                            isOpen={false} 
-                            button={<button>Test</button>}>
-                            {/* <GenericList list={[]} /> */}
-                            <CardsList />
-                        </Dropdown>
-                    </div>
+                <CardsList />
             </Content>
             
         </Layout>

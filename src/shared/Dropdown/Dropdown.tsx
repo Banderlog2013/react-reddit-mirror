@@ -1,5 +1,4 @@
 import React from 'react';
-import { VoidExpression } from 'typescript';
 import styles from './dropdown.css';
 
 interface IDropdownProps {

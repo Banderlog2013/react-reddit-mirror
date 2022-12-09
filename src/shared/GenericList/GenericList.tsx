@@ -1,12 +1,16 @@
 import React from "react";
+import styles from '../CardsList/Card/Menu/Menu.css'
 
 interface IItem {
     id: string;
-    text: string;
     onClick?: (id: string) => void;
     className?: string;
     As?: 'a' | 'li' | 'button' | 'div';
     href?: string;
+    icon?: React.ReactNode;
+    text?: React.ReactNode;
+    textContent?: React.ReactNode;
+    divider?: React.ReactNode
 }
 
 interface IGenericListProps {
@@ -18,14 +22,17 @@ const noop = () => {};
 export function GenericList({list}: IGenericListProps) {
     return (
         <>
-        {list.map(({As = 'div', text, onClick = noop, className, id, href}) => (
+        {list.map(({As = 'div', onClick = noop, className, id, href, icon, text, textContent, divider}) => (
             <As
                 className={className}
                 onClick={() => onClick(id)}
                 key={id}
                 href={href}
             >
+                {icon}
                 {text}
+                {textContent}
+                {divider}
             </As>
         ))}
         </>

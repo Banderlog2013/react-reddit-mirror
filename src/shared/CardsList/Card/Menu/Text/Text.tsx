@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './text.css';
 
 export const textComments = 'Коментарии',
-             textShare = 'Сохранить',
+             textShare = 'Поделиться',
              textHide = 'Скрыть',
              textSave = 'Сохранить',
              textComplain = 'Пожаловаться';

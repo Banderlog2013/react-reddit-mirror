@@ -7,14 +7,15 @@ import { Text } from './Text';
 import { Icons } from './Icon';
 import { comments, share, hide, save, complain } from './Icon';
 import { textComments, textShare, textHide, textSave, textComplain } from './Text';
+import { Divider } from './Divider';
 
 
 const MENULIST = [
-  {As: 'li' as const, icon: <Icons iconName={comments}/>, textContent: <Text textName={textComments}/>},
-  {As: 'li' as const, icon: <Icons iconName={share}/>, textContent: <Text textName={textShare}/>},
-  {As: 'li' as const, icon: <Icons iconName={hide}/>, textContent: <Text textName={textHide}/>},
-  {As: 'li' as const, icon: <Icons iconName={save}/>, textContent: <Text textName={textSave}/>},
-  {As: 'li' as const, icon: <Icons iconName={complain}/>, textContent: <Text textName={textComplain}/>}
+  {As: 'li' as const, className: styles.menuItem, icon: <Icons iconName={comments}/>, textContent: <Text textName={textComments}/>, divider: <Divider />},
+  {As: 'li' as const, className: styles.menuItem, icon: <Icons iconName={share}/>, textContent: <Text textName={textShare}/>, divider: <Divider />},
+  {As: 'li' as const, className: styles.menuItem, icon: <Icons iconName={hide}/>, textContent: <Text textName={textHide}/>, divider: <Divider />},
+  {As: 'li' as const, className: styles.menuItem, icon: <Icons iconName={save}/>, textContent: <Text textName={textSave}/>, divider: <Divider />},
+  {As: 'li' as const, className: styles.menuItem, icon: <Icons iconName={complain}/>, textContent: <Text textName={textComplain}/>, divider: <Divider />}
 ].map(generateId)
 
 export function Menu() {
@@ -32,6 +33,7 @@ export function Menu() {
           <div className={styles.menuItemsList}>
             <GenericList list={list}/>
           </div>
+          <button className={styles.closeButton}>Закрыть</button>
         </ul> 
       </Dropdown>
     </div>
