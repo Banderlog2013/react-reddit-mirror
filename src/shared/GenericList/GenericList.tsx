@@ -7,10 +7,11 @@ interface IItem {
     className?: string;
     As?: 'a' | 'li' | 'button' | 'div';
     href?: string;
-    icon?: React.ReactNode;
-    text?: React.ReactNode;
-    textContent?: React.ReactNode;
-    divider?: React.ReactNode
+    //icon?: React.ReactNode;
+    //text?: React.ReactNode;
+    //textContent?: React.ReactNode;
+    //divider?: React.ReactNode
+    menuitemslist: React.ReactNode
 }
 
 interface IGenericListProps {
@@ -22,17 +23,14 @@ const noop = () => {};
 export function GenericList({list}: IGenericListProps) {
     return (
         <>
-        {list.map(({As = 'div', onClick = noop, className, id, href, icon, text, textContent, divider}) => (
+        {list.map(({As = 'div', onClick = noop, className, id, href, menuitemslist}) => (
             <As
                 className={className}
                 onClick={() => onClick(id)}
                 key={id}
                 href={href}
             >
-                {icon}
-                {text}
-                {textContent}
-                {divider}
+                {menuitemslist}
             </As>
         ))}
         </>

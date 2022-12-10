@@ -3,6 +3,6 @@ import styles from './divider.css';
 
 export function Divider() {
   return (
-    <span className={styles.divider}></span>
+    <div className={styles.divider}></div>
   );
 }

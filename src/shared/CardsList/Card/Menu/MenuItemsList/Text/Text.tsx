@@ -8,14 +8,14 @@ export const textComments = 'Коментарии',
              textComplain = 'Пожаловаться';
 
 interface MenuText {
-  textName: React.ReactNode
+  text: React.ReactNode
 }
 
-export function Text({textName}: MenuText) {
+export function Text({text}: MenuText) {
 
   return (
     <span className={styles.s14}>
-      {textName}
+      {text}
     </span>
   );
 }
