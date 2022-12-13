@@ -9,6 +9,7 @@ import { generateRandomString, assignId, generateId } from "./utils/react/genera
 import { GenericList } from "./shared/GenericList/GenericList";
 import { merge } from "./utils/js/merge";
 import { Dropdown } from "./shared/Dropdown";
+import { Text } from "./shared/Text";
 
 const LIST = [
     {As: 'li' as const, text: 'some'},

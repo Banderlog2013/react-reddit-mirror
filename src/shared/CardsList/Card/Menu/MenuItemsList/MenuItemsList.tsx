@@ -1,38 +1,50 @@
 import React from 'react';
-import styles from './menuitemslist.css';
-import { Icons } from './Icon';
-import { Text } from './Text';
-import { Divider } from './Divider';
-import { iconComments, iconShare, iconHide, iconSave, iconComplain } from '../MenuItemsList/Icon';
-import { textComments, textShare, textHide, textSave, textComplain } from '../MenuItemsList/Text';
+import styles from './menuItemsList.css';
+import { BlockIcon, CommentsIcon, WarningIcon, ShareIcon, SaveIcon, HideIcon } from '../../../../Icons';
 
-export function MenuItemsList() {
-  return (
-    <div className={styles.menuItemsList}>
-      <div className={styles.menuItem}>
-        <Icons icon={iconComments}/>
-        <Text text={textComments}/>
-      </div>
-      <Divider/>
-      <div className={styles.menuItem}>
-        <Icons icon={iconShare}/>
-        <Text text={textShare}/>
-      </div>
-      <Divider/>
-      <div className={styles.menuItem}>
-        <Icons icon={iconHide}/>
-        <Text text={textHide}/>
-      </div>
-      <Divider/>
-      <div className={styles.menuItem}>
-        <Icons icon={iconSave}/>
-        <Text text={textSave}/>
-      </div>
-      <Divider/>
-      <div className={styles.menuItem}>
-        <Icons icon={iconComplain}/>
-        <Text text={textComplain}/>
-      </div>
-    </div>
+import { EColor, Text } from '../../../../Text';
+import { EIcons, Icon } from '../../../../Icons';
+
+interface IMenuItemsProps {
+  postId: string;
+}
+
+export function MenuItemsList({postId}: IMenuItemsProps) {
+  return ( 
+    <ul className={styles.menuItemsList}>
+
+      <li className={styles.menuItem} onClick={() => console.log(postId)}>
+        <Icon  name={EIcons.comments} size={14}/>
+        <Text desktopSize={14} tabletSize={14} mobileSize={12} size={12} color={EColor.gray66}>Коментарии</Text>
+      </li>
+
+      <div className={styles.divider} />
+
+      <li className={styles.menuItem} onClick={() => console.log(postId)}>
+        <Icon  name={EIcons.share} size={14}/>
+        <Text desktopSize={14} tabletSize={14} mobileSize={12} size={12} color={EColor.gray66}>Поделиться</Text>
+      </li>
+
+      <div className={styles.divider} />
+
+      <li className={styles.menuItem} onClick={() => console.log(postId)}>
+        <Icon name={EIcons.hide} size={14}/>
+        <Text desktopSize={14} tabletSize={14} mobileSize={12} size={12} color={EColor.gray66}>Скрыть</Text>
+      </li>
+
+      <div className={styles.divider} />
+
+      <li className={styles.menuItem} onClick={() => console.log(postId)}>
+        <Icon name={EIcons.save} size={14}/>
+        <Text desktopSize={14} tabletSize={14} mobileSize={12} size={12} color={EColor.gray66}>Сохранить</Text>
+      </li>
+
+      <div className={styles.divider} />
+      
+      <li className={styles.menuItem}>
+        <Icon name={EIcons.warning} size={14}/>
+        <Text desktopSize={14} tabletSize={14} mobileSize={12} size={12} color={EColor.gray66}>Пожаловаться</Text>
+      </li>
+    </ul>
   );
 }
