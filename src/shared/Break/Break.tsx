@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './text.css';
+import styles from '../Text/text.css';
 import classNames from 'classnames'
 
 
