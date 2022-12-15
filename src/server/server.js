@@ -2,6 +2,7 @@ import express from "express";
 import ReactDOM from "react-dom/server";
 import { indexTemplate } from "./indexTemplate";
 import { App } from "../App";
+import axios from "axios";
 
 const app = express();
 
@@ -11,8 +12,20 @@ app.get("/", (req, res) => {
   res.send(indexTemplate(ReactDOM.renderToString(App())));
 });
 
+// app.get("/auth", (req, res) => {
+//   //req.query.code;
+//   res.send(indexTemplate(ReactDOM.renderToString(App())));
+// });
+
 app.get("/auth", (req, res) => {
-  //req.query.code;
+  axios.post(
+    'https://www.reddit.com/api/v1/access_token',
+    `grant_type=authorization_code&code=${req.query.code}&redirect_uri=http://localhost:3000/auth`,
+    { 
+      auth: { username: process.env.CLIENT_ID, password: '6SHkMWJ_yz1PBl5DN3CBQlb-xp0Hhg' },
+      headers: { 'Content-type': 'application/x-www-form-urlencoded' }
+    }
+  ).then(console.log);
   res.send(indexTemplate(ReactDOM.renderToString(App())));
 });
 
