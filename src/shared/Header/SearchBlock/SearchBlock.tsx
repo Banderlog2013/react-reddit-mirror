@@ -16,7 +16,7 @@ export function SearchBlock({ token }: ISearchBlockProps) {
     useEffect(() => {
       if (token && token.length > 0 != undefined) {
         axios.get('https://oauth.reddit.com/api/v1/me', {
-          headers: { 'Authorization': `Bearer ${'1558409938014-wIAqrRfw1NfFJO6gTuELeCFUBml8LA'}`  }
+          headers: { 'Authorization': `Bearer ${token}`  }
         }).then((resp) => {
           const userData = resp.data;
           setData({ name: userData.name, iconImg: userData.icon_img });
