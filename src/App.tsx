@@ -5,6 +5,7 @@ import { Layout } from "./shared/Layout/Layout";
 import { Header } from "./shared/Header/Header";
 import { Content } from "./shared/Content/Content";
 import { CardsList } from "./shared/CardsList";
+import { useToken } from "./hooks/useToken"
 // import { generateRandomString, assignId, generateId } from "./utils/react/generateRandomIndex";
 // import { GenericList } from "./shared/GenericList/GenericList";
 // import { merge } from "./utils/js/merge";
@@ -28,15 +29,14 @@ function AppComponent() {
     //     setList(list.concat(generateId({text: generateRandomString(), As: 'li' as const})));
         
     // }
-
+    const [token] = useToken();
     return (
         <Layout>
-            <Header />
+            <Header token={token}/>
             <Content>
                 <CardsList />
                 <CardsList />
-            </Content>
-            
+            </Content>    
         </Layout>
     );
 }

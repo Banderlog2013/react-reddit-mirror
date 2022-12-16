@@ -25,8 +25,13 @@ app.get("/auth", (req, res) => {
       auth: { username: process.env.CLIENT_ID, password: '6SHkMWJ_yz1PBl5DN3CBQlb-xp0Hhg' },
       headers: { 'Content-type': 'application/x-www-form-urlencoded' }
     }
-  ).then(console.log);
-  res.send(indexTemplate(ReactDOM.renderToString(App())));
+  ).then(({ data }) => {
+    res.send(indexTemplate(ReactDOM.renderToString(App()), data['access_token']),
+    );
+  })//.catch(console.log)
+  
+  // ).then(console.log);
+  // res.send(indexTemplate(ReactDOM.renderToString(App())));
 });
 
 app.listen(3000, () => {
