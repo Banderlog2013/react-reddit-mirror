@@ -14,14 +14,16 @@ interface IUserData {
 export function SearchBlock({ token }: ISearchBlockProps) {
   const [data, setData] = useState<IUserData>({});
     useEffect(() => {
-      if (token && token.length > 0 != undefined) {
+      if (!token || token === 'undefined') {
+          return console.log(token)
+      } else {
         axios.get('https://oauth.reddit.com/api/v1/me', {
-          headers: { 'Authorization': `Bearer ${token}`  }
+          headers: { 'Authorization': `bearer ${token}`  },
         }).then((resp) => {
           const userData = resp.data;
-          setData({ name: userData.name, iconImg: userData.icon_img });
-        }).catch(console.log);
-      };
+          setData({ name: userData.name, iconImg: userData.icon_img.split('?')[0] });
+        })//.catch(console.log);
+      }
     }, [token])
 
   return (
@@ -30,15 +32,3 @@ export function SearchBlock({ token }: ISearchBlockProps) {
     </div>
   );
 }
-
-
-// useEffect(() => {
-//   axios.get('https://oauth.reddit.com/api/v1/me?sr_detail=true', {
-//     headers: { Authorization: `bearer ${token}` }
-//   }).then((resp) => {
-//     const userData = resp.data;
-//     setData({name: userData.name, iconImg: userData.icon_img});
-//     console.log(userData);
-//   }).catch(console.log)
-
-// }, [token])
