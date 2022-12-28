@@ -1,3 +1,4 @@
+import { text } from "express";
 import React from "react";
 import styles from '../CardsList/Card/Menu/menu.css'
 
@@ -8,10 +9,9 @@ interface IItem {
     As?: 'a' | 'li' | 'button' | 'div';
     href?: string;
     icon?: React.ReactNode;
-    //text?: React.ReactNode;
+    text?: React.ReactNode;
     //textContent?: React.ReactNode;
     //divider?: React.ReactNode
-    menuitemslist: React.ReactNode
 }
 
 interface IGenericListProps {
@@ -23,14 +23,14 @@ const noop = () => {};
 export function GenericList({list}: IGenericListProps) {
     return (
         <>
-            {list.map(({As = 'div', onClick = noop, className, id, href, menuitemslist}) => (
+            {list.map(({As = 'div', onClick = noop, className, id, href}) => (
                 <As
                     className={className}
                     onClick={() => onClick(id)}
                     key={id}
                     href={href}
                 >
-                    {menuitemslist}
+                    {text}
                 </As>
             ))}
         </>

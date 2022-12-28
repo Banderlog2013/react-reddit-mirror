@@ -4,16 +4,21 @@ import { KarmaCounter } from './KarmaCounter';
 import { CommentsButton } from './CommentsButton';
 import { ShareButton } from './ShareButton';
 import { SaveButton } from './SaveButton';
+import { ICardProps } from '../Card';
 
-export function Controls() {
-  return (
-    <div className={styles.controls}>
-      <KarmaCounter />
-      <CommentsButton />
-      <div className={styles.actions}>
-        <ShareButton />
-        <SaveButton />
-      </div>
-    </div>
-  );
+interface IControlProps {
+	points?: number
+}
+
+export function Controls({points}: IControlProps) {
+	return (
+		<div className={styles.controls}>
+			<KarmaCounter points={points}/>
+			<CommentsButton />
+			<div className={styles.actions}>
+				<ShareButton />
+				<SaveButton />
+			</div>
+		</div>
+	);
 }

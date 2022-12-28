@@ -1,24 +1,34 @@
 import React from 'react';
 import styles from './textContent.css';
 
-export function TextContent() {
-  return (
-    <div className={styles.textContent}>
-      <div className={styles.metaData}>
-        <div className={styles.userLink}>
-          <img className={styles.avatar} src="https://avatarfiles.alphacoders.com/335/335001.png" alt="img" />
-          <a href="#user-url" className={styles.username}> Дмитрий Гришин</a>
-        </div>
-        <span className={styles.createAt}>
-        <span className={styles.publishedLabel}>Опубликовано </span>
-          4 часа назад
-        </span> 
-      </div>
-      <h2 className={styles.title}>
-        <a href="@post-url" className={styles.postLink}>
-        Следует отметить, что новая модель организационной деятельности...
-        </a>
-      </h2>
-    </div>
-  );
+export interface ITextProps {
+	author?: string;
+	title?: string;
+	avatar?: string;
+	permalink?: string;
+	created?: number | string | any;
 }
+
+
+export function TextContent({title, author, avatar, created, permalink}: ITextProps) {
+	
+	return (
+		<div className={styles.textContent}>
+			<div className={styles.metaData}>
+				<div className={styles.userLink}>
+				<img className={styles.avatar} src={avatar} alt="img" />
+				<a href="#user-url" className={styles.username}> {author}</a>
+				</div>
+				<span className={styles.createAt}>
+				<span className={styles.publishedLabel}>Опубликовано </span>
+				{created}
+				</span> 
+			</div>
+			<h2 className={styles.title}>
+				<a href={'https://www.reddit.com/'+permalink} className={styles.postLink}>{title}
+				</a>
+			</h2>
+		</div>
+	);
+}
+

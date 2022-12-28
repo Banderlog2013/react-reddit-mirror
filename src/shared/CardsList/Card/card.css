@@ -9,9 +9,9 @@ button {
     position: relative;
     background-color: var(--white);
     border-radius: 7px;
-    padding: 20px 20px 10px;
     display: flex;
     flex-flow: row wrap;
+	margin-top: 20px;
 }
 .card > *, .textContent > * {
     flex: 1 1 100%;
