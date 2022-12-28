@@ -1,6 +1,5 @@
 import { text } from "express";
 import React from "react";
-import styles from '../CardsList/Card/Menu/menu.css'
 
 interface IItem {
     id: string;
@@ -10,8 +9,6 @@ interface IItem {
     href?: string;
     icon?: React.ReactNode;
     text?: React.ReactNode;
-    //textContent?: React.ReactNode;
-    //divider?: React.ReactNode
 }
 
 interface IGenericListProps {

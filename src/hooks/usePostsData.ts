@@ -13,7 +13,7 @@ export function usePostsData() {
             }).then((resp) => {
                 const postsData = resp.data.data.children;
                 setPosts(postsData);
-                console.log(postsData)
+                //console.log(postsData)
             }).catch(console.log);
         }
 

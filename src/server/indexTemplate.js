@@ -16,5 +16,3 @@ export const indexTemplate = (content, token) => `
 </body>
 </html>
 `;
-
-{/* <script>window.__token__ = '${token}'</script> */}
