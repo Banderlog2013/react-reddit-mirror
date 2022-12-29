@@ -13,7 +13,6 @@ export interface IPostData {
 	score?: number;
 	num_comments?: number | string | any;
 	created?: number | string | any;
-	permalink?: string;
 	sr_detail?: {
 		icon_img: string;
 	};
@@ -68,7 +67,7 @@ export function Card({data}: ICardProps) {
 	
 	return (
 		<li id={data?.id} className={styles.card}>	
-			<TextContent title={data?.title} author={data?.author} avatar={data?.sr_detail?.icon_img} created={timePost()}  permalink={data?.permalink}/>
+			<TextContent title={data?.title} author={data?.author} avatar={data?.sr_detail?.icon_img} created={timePost()}/>
 			<Preview preview={data?.thumbnail}/>
 			<Menu />
 			<Controls points={data?.score}/>

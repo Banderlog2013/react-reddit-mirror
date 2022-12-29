@@ -1,16 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Title } from './Title';
 import styles from './textContent.css';
 
 export interface ITextProps {
 	author?: string;
 	title?: string;
 	avatar?: string;
-	permalink?: string;
 	created?: number | string | any;
 }
 
 
-export function TextContent({title, author, avatar, created, permalink}: ITextProps) {
+export function TextContent({title, author, avatar, created}: ITextProps) {
 	
 	return (
 		<div className={styles.textContent}>
@@ -24,10 +24,7 @@ export function TextContent({title, author, avatar, created, permalink}: ITextPr
 				{created}
 				</span> 
 			</div>
-			<h2 className={styles.title}>
-				<a href={'https://www.reddit.com/'+permalink} className={styles.postLink}>{title}
-				</a>
-			</h2>
+			<Title title={title}/>
 		</div>
 	);
 }
