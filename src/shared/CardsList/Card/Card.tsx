@@ -4,6 +4,7 @@ import { TextContent } from './TextContent';
 import { Preview } from './Preview';
 import { Menu } from './Menu';
 import { Controls } from './Controls';
+import { Comment } from './Comments';
 
 export interface IPostData {
 	id?: string;
@@ -61,7 +62,6 @@ export function Card({data}: ICardProps) {
 		} else if (resulTime == minutes && minutes >= 5) {
 			result = minutes + ' минут назад'
 		}
-
 		return result;
 	}
 	

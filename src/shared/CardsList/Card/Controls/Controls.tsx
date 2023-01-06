@@ -4,7 +4,6 @@ import { KarmaCounter } from './KarmaCounter';
 import { CommentsButton } from './CommentsButton';
 import { ShareButton } from './ShareButton';
 import { SaveButton } from './SaveButton';
-import { ICardProps } from '../Card';
 
 interface IControlProps {
 	points?: number

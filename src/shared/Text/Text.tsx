@@ -30,26 +30,26 @@ interface ITextProps {
 }
 
 export function Text(props: ITextProps) {
-  const { 
-    As = 'span', 
-    color= EColor.black, 
-    children, size, 
-    mobileSize, 
-    tabletSize, 
-    desktopSize 
-  } = props;
+	const { 
+		As = 'span', 
+		color= EColor.black, 
+		children, size, 
+		mobileSize, 
+		tabletSize, 
+		desktopSize 
+	} = props;
 
-  const classes = classNames(
-    styles[`s${size}`],
-    styles[color],
-    {[styles[`m${mobileSize}`]]: mobileSize},
-    {[styles[`t${tabletSize}`]]: tabletSize},
-    {[styles[`d${desktopSize}`]]: desktopSize}
-  );
+  	const classes = classNames(
+		styles[`s${size}`],
+		styles[color],
+		{[styles[`m${mobileSize}`]]: mobileSize},
+		{[styles[`t${tabletSize}`]]: tabletSize},
+		{[styles[`d${desktopSize}`]]: desktopSize}
+    );
 
-  return (
-    <As className={classes}>
-      {children}
-    </As>
-  );
+  	return (
+		<As className={classes}>
+			{children}
+		</As>
+	);
 }

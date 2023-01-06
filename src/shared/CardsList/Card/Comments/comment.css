@@ -1,0 +1,8 @@
+.comment {
+  	display: flex;
+	margin-top: 12px;
+}
+
+.textComment {
+	padding-left: 4px;
+}

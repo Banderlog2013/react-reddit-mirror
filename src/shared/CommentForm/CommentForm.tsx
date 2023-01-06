@@ -1,10 +1,10 @@
 import React, { ChangeEvent, FormEvent, useContext, useRef, useState } from 'react';
 import styles from '../CommentForm/commentForm.css';
-import { commentContext } from '../Context/commentContext';
+import { commentsContext } from '../Context/commentsContext';
 
 
 export function CommentForm() {
-	const { value, onChange } = useContext(commentContext)
+	const { value, onChange } = useContext(commentsContext)
 
 	function handleChange(event: ChangeEvent<HTMLTextAreaElement>) {
 		onChange(event.target.value);

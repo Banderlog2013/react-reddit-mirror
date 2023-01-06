@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Title } from './Title';
 import styles from './textContent.css';
+import { Comment } from '../Comments';
 
 export interface ITextProps {
 	author?: string;
@@ -14,6 +15,7 @@ export function TextContent({title, author, avatar, created}: ITextProps) {
 	
 	return (
 		<div className={styles.textContent}>
+			<Comment />
 			<div className={styles.metaData}>
 				<div className={styles.userLink}>
 				<img className={styles.avatar} src={avatar} alt="img" />

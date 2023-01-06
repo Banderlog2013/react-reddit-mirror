@@ -1,6 +1,4 @@
 import React from 'react';
-import styles from './icon.css';
-import classNames from 'classnames';
 import { BlockIcon, CommentsIcon, MenuIcon, SaveIcon, ShareIcon, WarningIcon } from '../Icons';
 import { HideIcon } from '../Icons/HideIcon';
 
@@ -23,39 +21,39 @@ interface IIconProps {
 }
 
 export function Icon(props: IIconProps) {
-    const {  name, size } = props;
+    const { name, size } = props;
 
     switch (name) {
-      case EIcons.block:
-        return (
-          <BlockIcon width={size} height={size}/>
-      )
-      case EIcons.comments:
-        return (
-          <CommentsIcon />
-      );
-      case EIcons.hide:
-        return (
-          <HideIcon />
-      );
-      case EIcons.menu:
-        return (
-          <MenuIcon />
-      );
-      case EIcons.save:
-        return (
-          <SaveIcon />
-      );
-      case EIcons.share:
-        return (
-          <ShareIcon />
-      );
-      case EIcons.warning:
-        return (
-          <WarningIcon />
-      );
-      default: 
-      return <></>
-    }
+		case EIcons.block:
+			return (
+				<BlockIcon width={size} height={size}/>
+				)
+			case EIcons.comments:
+				return (
+				<CommentsIcon />
+			);
+			case EIcons.hide:
+				return (
+				<HideIcon />
+			);
+			case EIcons.menu:
+				return (
+				<MenuIcon />
+			);
+			case EIcons.save:
+				return (
+				<SaveIcon />
+			);
+			case EIcons.share:
+				return (
+				<ShareIcon />
+			);
+			case EIcons.warning:
+				return (
+				<WarningIcon />
+			);
+			default: 
+		return <></>
+	}
 
 }
