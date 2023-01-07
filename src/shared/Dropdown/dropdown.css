@@ -3,8 +3,11 @@
     flex: 1 1 0%;
 }
 
-.listContainer {
+/* .listContainer {
     position: relative;
+} */
+.listContainer {
+    position: fixed;
 }
 
 .list {

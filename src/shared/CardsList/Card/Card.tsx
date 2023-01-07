@@ -4,7 +4,6 @@ import { TextContent } from './TextContent';
 import { Preview } from './Preview';
 import { Menu } from './Menu';
 import { Controls } from './Controls';
-import { Comment } from './Comments';
 
 export interface IPostData {
 	id?: string;
@@ -42,25 +41,21 @@ export function Card({data}: ICardProps) {
 		}
 		
 		if (resulTime == days && days == 1) {
-			result = days + ' день назад' 
+			return `${days} день назад`
 		} else if (resulTime == days && days > 1) {
-			result = days + ' дней назад'
-		} else if (resulTime == hours && hours == 1) {
-			result = hours + ' час назад' 
-		} else if (resulTime == hours && hours == 21) {
-			result = hours + ' час назад'
-		} else if (resulTime == hours && hours > 1 && hours <= 4) {
-			result = hours + ' часа назад'
-		} else if (resulTime == hours && hours >=  22 && hours <= 24) {
-			result = hours + ' часа назад'
+			return `${days} дней назад`
+		} else if (resulTime == hours && hours == 1 || hours == 21) {
+			return `${hours} час назад` 
+		} else if (resulTime == hours && hours > 1 && hours <= 4 || hours >=  22 && hours <= 24) {
+			return `${hours} часа назад` 
 		} else if (resulTime == hours && hours > 1 && hours >= 5) {
-			result = hours + ' часов назад'
+			return `${hours} часов назад` 
 		} else if (resulTime == minutes && minutes == 1) {
-			result = minutes + ' минуту назад'
+			return `${minutes} минуту назад` 
 		} else if (resulTime == minutes && minutes > 1 && minutes <= 4) {
-			result = minutes + ' минуты назад'
+			return `${minutes} минуты назад` 
 		} else if (resulTime == minutes && minutes >= 5) {
-			result = minutes + ' минут назад'
+			return `${minutes} минут назад` 
 		}
 		return result;
 	}

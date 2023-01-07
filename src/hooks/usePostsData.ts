@@ -8,7 +8,7 @@ export function usePostsData() {
 
     useEffect(() => {
         if (token && token.length > 0 && token != 'undefined') {
-            axios.get('https://oauth.reddit.com/best.json', {
+            axios.get('https://oauth.reddit.com/best.json?sr_detail=true', {
             headers: { Authorization: `bearer ${token}` },
             }).then((resp) => {
                 const postsData = resp.data.data.children;
