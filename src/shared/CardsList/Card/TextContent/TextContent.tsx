@@ -18,12 +18,12 @@ export function TextContent({title, author, avatar, created}: ITextProps) {
 			<Comment />
 			<div className={styles.metaData}>
 				<div className={styles.userLink}>
-				<img className={styles.avatar} src={avatar} alt="img" />
-				<a href="#user-url" className={styles.username}> {author}</a>
+					<img className={styles.avatar} src={avatar} alt="img" />
+					<a href="#user-url" className={styles.username}> {author}</a>
 				</div>
 				<span className={styles.createAt}>
-				<span className={styles.publishedLabel}>Опубликовано </span>
-				{created}
+					<span className={styles.publishedLabel}>Опубликовано </span>
+					{created}
 				</span> 
 			</div>
 			<Title title={title}/>

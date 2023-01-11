@@ -9,7 +9,5 @@ export function PostsContextProvider({children}: {children: React.ReactNode}) {
         <postsContext.Provider value={posts}>
             {children}
         </postsContext.Provider>
-    
     )
-
 }

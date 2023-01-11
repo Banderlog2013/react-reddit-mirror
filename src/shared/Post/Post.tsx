@@ -36,6 +36,8 @@ export function Post(props: IPost) {
                 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis, ipsum voluptatibus! Corrupti, eos! Voluptatem deleniti, voluptatum necessitatibus provident aut dolores minima laborum quidem, velit dignissimos, quaerat quae perferendis architecto magni.</p>
             </div>
             <CommentForm />
+            {/* <CommentContainer /> */}
+            {/* <CommentBlock/> */}
         </div>
     ), node);
 }

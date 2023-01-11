@@ -1,5 +1,5 @@
-import React from "react";
-import { useComments } from "../../hooks/usePostComments";
+import React, { useState } from "react";
+import { useComments } from "../../hooks/useComments";
 
 type commentsContextType = {
     value: string;
@@ -11,12 +11,17 @@ export const commentsContext = React.createContext<commentsContextType>({
     onChange: () => {}
 });
 
-// export function CommentContextProvider({children}: {children: React.ReactNode}) {
-//     const [comments] = useComments();
-//     return (
-//         <commentsContext.Provider value={comments}>
-//             {children}
-//         </commentsContext.Provider>
-//     )
+export function CommentContextProvider({children}: {children: React.ReactNode}) {
+    //const [comments, setComments] = useComments();
+    const [comments, setComments] = useState('');
+    return (
+        <commentsContext.Provider value={{
+            value: comments, 
+            onChange: (newComments: string) => {
+                setComments(newComments);
+            }}}>
 
-// }
+            {children}
+        </commentsContext.Provider>
+    )
+}

@@ -5,12 +5,11 @@ import { MenuItemsList } from './MenuItemsList';
 import { MenuIcon } from '../../../Icons/MenuIcon';
 import { EColor, Text } from '../../../Text';
 
-// interface IMenuProps {
-// 	x?: string | number | any;
-// 	y?: string | number | any;
-// }
+export interface IMenuProps {
+	postId?: string;
+}
 
-export function Menu() {
+export function Menu({postId}: IMenuProps) {
 
 	return (
 		<div className={styles.menu}>
@@ -22,7 +21,7 @@ export function Menu() {
 				}
 			>
 				<div className={styles.dropdown}>
-					<MenuItemsList postId='1234'/>
+					<MenuItemsList postId={postId}/>
 						<button className={styles.closeButton}>
 							<Text desktopSize={14} tabletSize={14} mobileSize={12} size={12} color={EColor.gray66}>
 							Закрыть

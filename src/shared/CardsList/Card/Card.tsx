@@ -4,9 +4,10 @@ import { TextContent } from './TextContent';
 import { Preview } from './Preview';
 import { Menu } from './Menu';
 import { Controls } from './Controls';
+import { useComments } from '../../../hooks/useComments';
 
 export interface IPostData {
-	id?: string;
+	id: string;
 	author?: string;
 	title?: string;
 	thumbnail?: string;
@@ -19,13 +20,13 @@ export interface IPostData {
 } 
 
 export interface ICardProps {
-	data?: IPostData;
+	data: IPostData;
 	kind?: string;
 }
 
 export function Card({data}: ICardProps) {
+	const [comments, setComments] = useComments({data});
 	const postDate = new Date().getTime() - new Date((data?.created)*1000).getTime();
-		
 	let days = Math.floor( (postDate/(1000*60*60*24)) ),
 		hours = Math.floor( (postDate/(1000*60*60) % 24) ),
 		minutes = Math.floor( (postDate/1000/60) % 60 );
@@ -64,7 +65,7 @@ export function Card({data}: ICardProps) {
 		<li id={data?.id} className={styles.card}>	
 			<TextContent title={data?.title} author={data?.author} avatar={data?.sr_detail?.icon_img} created={timePost()}/>
 			<Preview preview={data?.thumbnail}/>
-			<Menu />
+			<Menu postId={data?.id}/>
 			<Controls points={data?.score}/>
 		</li>
 	);

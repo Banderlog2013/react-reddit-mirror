@@ -1,20 +1,23 @@
-import { useContext, useEffect, useState,  } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from 'axios';
 import { tokenContext } from "../shared/Context/tokenContext";
+import { ICardProps } from "../shared/CardsList/Card";
 
-export function useComments() {
-    const [comments, setComments] = useState([]);
+
+export function useComments({data}: ICardProps) {
+    const [comments, setComments] = useState('');
     const token = useContext(tokenContext);
+    const id = data.id;
+    //console.log(id);
 
     useEffect(() => {
         if (token && token.length > 0 && token != 'undefined') {
-            axios.get('https://oauth.reddit.com/comments/${id}', {
+            axios.get(`https://oauth.reddit.com/comments/${id}`, {
             headers: { Authorization: `bearer ${token}` },
-            params: { limit: 10 },
             }).then((resp) => {
-                const postComments = resp.data.data.children;
+                const postComments = resp.data[0].data.children;
                 setComments(postComments);
-                console.log(postComments)
+                //console.log(postComments);
             }).catch(console.log);
         }
 

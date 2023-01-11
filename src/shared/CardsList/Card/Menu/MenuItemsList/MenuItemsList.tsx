@@ -4,12 +4,12 @@ import { EColor, Text } from '../../../../Text';
 import { EIcons, Icon } from '../../../../Icons';
 
 interface IMenuItemsProps {
-  postId: string;
+  postId?: string;
 }
 
 export function MenuItemsList({postId}: IMenuItemsProps) {
 	return ( 
-		<ul className={styles.menuItemsList}>
+		<ul id={postId} className={styles.menuItemsList}>
 
 			<li className={styles.menuItem} onClick={() => console.log(postId)}>
 				<Icon  name={EIcons.comments} size={14}/>

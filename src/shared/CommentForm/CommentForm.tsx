@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FormEvent, useContext, useRef, useState } from 'react';
+import React, { ChangeEvent, FormEvent, useContext} from 'react';
 import styles from '../CommentForm/commentForm.css';
 import { commentsContext } from '../Context/commentsContext';
 
@@ -19,6 +19,6 @@ export function CommentForm() {
 		<form className={styles.form} onSubmit={handleSubmit}>
 			<textarea className={styles.input} value={value} onChange={handleChange}/>
 			<button type="submit" className={styles.button}>Коментировать</button>
-		</form>
+		</form>	
     );
 }
