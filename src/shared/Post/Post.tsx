@@ -1,14 +1,15 @@
-import React, { useEffect, useRef } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
+import { usePostsData } from "../../hooks/usePostsData";
+import { CommentBlock } from "../CommentBlock";
 import { CommentForm } from "../CommentForm";
 import styles from './post.css'
-
 interface IPost {
     onClose?: () => void;
 } 
 
 export function Post(props: IPost) {
-    const ref = useRef<HTMLDivElement>(null);
+    const ref = useRef<HTMLDivElement>(null); 
 
     useEffect(() => {
         function handleClick(event: MouseEvent) {
@@ -36,8 +37,8 @@ export function Post(props: IPost) {
                 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis, ipsum voluptatibus! Corrupti, eos! Voluptatem deleniti, voluptatum necessitatibus provident aut dolores minima laborum quidem, velit dignissimos, quaerat quae perferendis architecto magni.</p>
             </div>
             <CommentForm />
-            {/* <CommentContainer /> */}
-            {/* <CommentBlock/> */}
+            <CommentBlock id={''}/>
+            
         </div>
     ), node);
 }

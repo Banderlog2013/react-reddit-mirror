@@ -4,7 +4,6 @@ import { TextContent } from './TextContent';
 import { Preview } from './Preview';
 import { Menu } from './Menu';
 import { Controls } from './Controls';
-import { useComments } from '../../../hooks/useComments';
 
 export interface IPostData {
 	id: string;
@@ -25,7 +24,6 @@ export interface ICardProps {
 }
 
 export function Card({data}: ICardProps) {
-	const [comments, setComments] = useComments({data});
 	const postDate = new Date().getTime() - new Date((data?.created)*1000).getTime();
 	let days = Math.floor( (postDate/(1000*60*60*24)) ),
 		hours = Math.floor( (postDate/(1000*60*60) % 24) ),

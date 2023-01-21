@@ -1,0 +1,134 @@
+.commentContainer {
+    display: flex;
+    padding-top: 20px;
+}
+
+
+.commentContent {
+    display: flex;
+    flex-flow: row wrap;
+}
+/* .commentContent > * + * {
+    padding-top: 20px;
+} */
+
+.commentDivider {
+    display: flex;
+    flex-flow: row wrap;
+    padding-right: 22px;
+}
+
+.divider {
+    padding-top: 65px;
+    position: relative;
+    width: 2px;
+    background-color: #D9D9D9;
+    margin-left: 8px;
+}
+
+.metaData {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    font-size: 10px;
+    line-height: 12px;
+}
+
+.commentIcon {
+	display: flex;
+    flex-flow: row nowrap;
+	cursor: pointer;
+}
+
+.commentIcon > * + * {
+    padding-left: 27px;
+}
+
+.publishedLabel {
+    display: none;
+}
+
+.createdAt, .createdAt span {
+    color: var(--grey99);
+}
+
+@media all and (min-width: 1024px) {
+    .commentContent {
+        /* flex-basis: 540px; */
+        order: 1;
+        /* margin: 0 0 0 38px; */
+        flex-flow: column-reverse nowrap;
+        justify-content: center;
+    }
+    /* .commentContent > * {
+        flex: 0 0;
+    } */
+
+    .metaData {
+        justify-content: flex-start;
+        font-size: 14px;
+        line-height: 16px;
+    }
+
+    .publishedLabel {
+        display: inline;
+    }
+}
+
+.userLinkComment {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    height: 20px;
+	margin-right: 6px;
+}
+  
+.avatarComment {
+    border-radius: 20px;
+    width: 20px;
+    height: 20px;
+    margin: 0 7px 0 0;
+}
+  
+.usernameComment {
+    color: var(--orange);
+    position: relative;
+    z-index: 1;
+}
+
+.label {
+	padding: 0px 10px 0 10px;
+	background-color: #D9D9D9;
+	margin-left: 6px;
+}
+  
+@media all and (min-width: 1024px) {
+    .userLink {
+        padding: 0 0 0 5px;
+    }
+}
+
+@media all and (min-width: 1540px) {
+    .userLink:hover a {
+        text-decoration: underline;
+    }
+}
+
+@media all and (min-width: 1540px) {
+    .textContent {
+        flex-basis: 672px;
+    }
+}
+
+@media all and (min-width: 1024px) {
+    .textContent {
+        flex-basis:      540px;
+        order:           1;
+        flex-flow:       column-reverse nowrap;
+        justify-content: center;
+    }
+
+    /* .commentContent > * {
+        flex: 0 0;
+    } */
+}

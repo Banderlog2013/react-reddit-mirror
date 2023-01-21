@@ -15,7 +15,6 @@ function AppComponent() {
 
     const [token] = useToken();
     const [commentValue, setCommentValue] = useState('');
-
     const CommentProvider = commentsContext.Provider;
 
     return (

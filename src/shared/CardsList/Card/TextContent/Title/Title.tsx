@@ -4,12 +4,11 @@ import { Post } from '../../../../Post';
 
 
 interface ITitleProps {
-    title?: string
+    title?: string;
 }
 
 export function Title({title}: ITitleProps) {
 	const [isModalOpened, setIsModalOpened] = useState(false);
-	
 	return (
         <h2 className={styles.title} onClick={() => {console.log('clicked');}}>
             <a href="#post-url" className={styles.postLink} onClick={() => {setIsModalOpened(true); }}>{title}
@@ -18,7 +17,6 @@ export function Title({title}: ITitleProps) {
                 <Post onClose={() => {setIsModalOpened(false)}}/>
             )}
         </h2>
-
 	);
 }
 

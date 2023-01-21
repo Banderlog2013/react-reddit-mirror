@@ -1,6 +1,7 @@
 import React from 'react';
-import { BlockIcon, CommentsIcon, MenuIcon, SaveIcon, ShareIcon, WarningIcon } from '../Icons';
-import { HideIcon } from '../Icons/HideIcon';
+import { BlockIcon, CommentsIcon, MenuIcon, SaveIcon, ShareIcon, WarningIcon, HideIcon } from '../Icons';
+import { ArrowIcon } from './ArrowIcon';
+
 
 
 export enum EIcons {
@@ -10,7 +11,8 @@ export enum EIcons {
     menu = 'MenuIcon',
     save = 'SaveIcon',
     share = 'ShareIcon',
-    warning = 'WarningIcon'
+    warning = 'WarningIcon',
+	arrow = 'ArrowIcon'
 }
 
 type TSizes = 10 | 12 | 14 | 15 | 16;
@@ -30,27 +32,31 @@ export function Icon(props: IIconProps) {
 				)
 			case EIcons.comments:
 				return (
-				<CommentsIcon />
+				<CommentsIcon width={size} height={size}/>
 			);
 			case EIcons.hide:
 				return (
-				<HideIcon />
+				<HideIcon width={size} height={size}/>
 			);
 			case EIcons.menu:
 				return (
-				<MenuIcon />
+				<MenuIcon/>
 			);
 			case EIcons.save:
 				return (
-				<SaveIcon />
+				<SaveIcon width={size} height={size}/>
 			);
 			case EIcons.share:
 				return (
-				<ShareIcon />
+				<ShareIcon width={size} height={size}/>
 			);
 			case EIcons.warning:
 				return (
-				<WarningIcon />
+				<WarningIcon width={size} height={size}/>
+			);
+			case EIcons.arrow:
+				return (
+				<ArrowIcon />
 			);
 			default: 
 		return <></>
