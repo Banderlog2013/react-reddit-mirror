@@ -1,9 +1,9 @@
-import React, { ChangeEvent, Component, FormEvent, useContext, useEffect, useState} from 'react';
+import React from 'react';
 import styles from './commentBlock.css';
 import { EIcons, Icon } from '../Icons';
 import { EColor, Text } from '../Text';
 import { UserComment } from '../UserComment';
-import { useComments } from '../../hooks/useComments';
+import { usePostComments } from '../../hooks/usePostComments';
 
 export interface ICommentBlock {
 	id?: string;
