@@ -3,25 +3,26 @@ import styles from './userComment.css';
 import { EIcons, Icon } from '../Icons';
 import { EColor, Text } from '../Text';
 
-
-export interface ICommentProps {
-	//id?: string;
-	comment?: string;
-//     username: string;
-//     timestamp: number | string | any;
+export interface IUserComment {
+	id: string;
+	author?: string;
+	created?: number | string | any;
+	body?: string;
 }
 
-export function UserComment({comment}: ICommentProps) {
+export interface IUserCommentProps {
+	data?: IUserComment;
+}
 
+export function UserComment({data}: IUserCommentProps) {
   	return (
-		
 		<>
-			<div className={styles.commentContainer}>
+			<div id={data?.id} className={styles.commentContainer}>
 				<div className={styles.commentDivider}>
 					<div>
 						<Icon name={EIcons.arrow} />
+						<div className={styles.divider}></div>
 					</div>
-					<div className={styles.divider}></div>
 				</div>
 				<div className={styles.commentContent}>
 					<div className={styles.commentIcon}>
@@ -38,14 +39,14 @@ export function UserComment({comment}: ICommentProps) {
 							<Text desktopSize={14} tabletSize={14} mobileSize={12} size={12} color={EColor.gray66}> Пожаловаться</Text>
 						</button>
 					</div>
-					<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi ut aspernatur accusamus amet explicabo aperiam at rem? Dolorum, inventore nulla explicabo nobis hic odio ea, sequi eaque totam officia iusto.</p>
+					<p>{data?.body}</p>
 					<div className={styles.metaData}>
 						<div className={styles.userLinkComment}>
 							<img className={styles.avatarComment} src="https://images.unsplash.com/photo-1663893364107-a6ecd06cf615?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="img" />
-							<a href="#user-url" className={styles.usernameComment}>Вася Пупкин</a>
+							<a href="#user-url" className={styles.usernameComment}> {data?.author}</a>
 						</div>
 						<span className={styles.createAt}>
-							<span className={styles.publishedLabel}> Опубликовано </span>
+							<span className={styles.publishedLabel}> {data?.created} </span>
 							1 час назад
 						</span>
 						<div className={styles.label}>Лига джентельменов</div>

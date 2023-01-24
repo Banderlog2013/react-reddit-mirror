@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
-import { usePostComments } from "../../hooks/usePostComments";
 import { CommentBlock } from "../CommentBlock";
 import { CommentForm } from "../CommentForm";
 import styles from './post.css'
@@ -8,15 +7,10 @@ import styles from './post.css'
 interface IPost {
     onClose?: () => void;
     postId: string;
-    // username?: string;
-    // comment?: string;
-    // timestamp?: number;
 } 
 
 export function Post(props: IPost) {
-    //const [comments] = usePostComments(props.postId);
     const ref = useRef<HTMLDivElement>(null);
-    //console.log(props.username);
     useEffect(() => {
         function handleClick(event: MouseEvent) {
             if (event.target instanceof Node && !ref.current?.contains(event.target)) {
