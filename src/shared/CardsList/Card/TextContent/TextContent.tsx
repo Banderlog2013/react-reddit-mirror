@@ -3,6 +3,7 @@ import { Title } from './Title';
 import styles from './textContent.css';
 
 export interface ITextProps {
+	postId: string;
 	author?: string;
 	title?: string;
 	avatar?: string;
@@ -10,7 +11,7 @@ export interface ITextProps {
 }
 
 
-export function TextContent({title, author, avatar, created}: ITextProps) {
+export function TextContent({title, author, avatar, created, postId}: ITextProps) {
 	
 	return (
 		<div className={styles.textContent}>
@@ -24,7 +25,7 @@ export function TextContent({title, author, avatar, created}: ITextProps) {
 					{created}
 				</span> 
 			</div>
-			<Title title={title}/>
+			<Title title={title} postId={postId}/>
 		</div>
 	);
 }

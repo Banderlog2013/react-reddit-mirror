@@ -25,7 +25,8 @@ export interface ICardProps {
 }
 
 export function Card({data}: ICardProps) {
-	const [comments] = usePostComments({data});
+	const postId = data.id;
+	const [comments] = usePostComments(postId);
 	const postDate = new Date().getTime() - new Date((data?.created)*1000).getTime();
 	let days = Math.floor( (postDate/(1000*60*60*24)) ),
 		hours = Math.floor( (postDate/(1000*60*60) % 24) ),
@@ -63,7 +64,7 @@ export function Card({data}: ICardProps) {
 	
 	return (
 		<li id={data?.id} className={styles.card}>	
-			<TextContent title={data?.title} author={data?.author} avatar={data?.sr_detail?.icon_img} created={timePost()}/>
+			<TextContent postId={data?.id} title={data?.title} author={data?.author} avatar={data?.sr_detail?.icon_img} created={timePost()}/>
 			<Preview preview={data?.thumbnail}/>
 			<Menu postId={data?.id}/>
 			<Controls points={data?.score}/>

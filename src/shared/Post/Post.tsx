@@ -1,16 +1,22 @@
 import React, { useContext, useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
-import { usePostsData } from "../../hooks/usePostsData";
+import { usePostComments } from "../../hooks/usePostComments";
 import { CommentBlock } from "../CommentBlock";
 import { CommentForm } from "../CommentForm";
 import styles from './post.css'
+
 interface IPost {
     onClose?: () => void;
+    postId: string;
+    // username?: string;
+    // comment?: string;
+    // timestamp?: number;
 } 
 
 export function Post(props: IPost) {
-    const ref = useRef<HTMLDivElement>(null); 
-
+    //const [comments] = usePostComments(props.postId);
+    const ref = useRef<HTMLDivElement>(null);
+    //console.log(props.username);
     useEffect(() => {
         function handleClick(event: MouseEvent) {
             if (event.target instanceof Node && !ref.current?.contains(event.target)) {
@@ -37,7 +43,7 @@ export function Post(props: IPost) {
                 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis, ipsum voluptatibus! Corrupti, eos! Voluptatem deleniti, voluptatum necessitatibus provident aut dolores minima laborum quidem, velit dignissimos, quaerat quae perferendis architecto magni.</p>
             </div>
             <CommentForm />
-            <CommentBlock id={''}/>
+            <CommentBlock postId={props.postId}  />
             
         </div>
     ), node);
