@@ -2,8 +2,6 @@ import React from 'react';
 import { BlockIcon, CommentsIcon, MenuIcon, SaveIcon, ShareIcon, WarningIcon, HideIcon } from '../Icons';
 import { ArrowIcon } from './ArrowIcon';
 
-
-
 export enum EIcons {
     block = "BlockIcon",
     comments = 'CommentsIcon',
@@ -20,10 +18,11 @@ type TSizes = 10 | 12 | 14 | 15 | 16;
 interface IIconProps {
     name: EIcons;
     size?: TSizes;
+	className?: string;
 }
 
 export function Icon(props: IIconProps) {
-    const { name, size } = props;
+    const { name, size, className } = props;
 
     switch (name) {
 		case EIcons.block:
@@ -56,7 +55,7 @@ export function Icon(props: IIconProps) {
 			);
 			case EIcons.arrow:
 				return (
-				<ArrowIcon />
+				<ArrowIcon className={className}/>
 			);
 			default: 
 		return <></>

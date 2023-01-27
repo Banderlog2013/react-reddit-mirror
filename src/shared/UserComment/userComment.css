@@ -1,44 +1,97 @@
-.commentContainer {
+.commentСontainer {
     display: flex;
-    padding-top: 20px;
+    align-items: flex-start;
+    padding-bottom: 20px;
+}
+  
+.arrowCommentСontainer {
+    display: flex;
+    align-items: center;
 }
 
+.arrowDown {
+    transform: rotate(180deg);
+}
+  
+.commentDivider {
+    align-items: center;
+    width: 2px;
+    background-color: #D9D9D9;
+    height: 49px;
+    margin: 11px 0 0 8px;
+}
+
+
+/* .form {
+	display: flex;
+	flex-direction: column;
+    margin-top: 20px;
+}
+
+.input {
+	height: 89px;
+	border: 1px solid #D9D9D9;
+	padding: 16px;
+	box-sizing: border-box;
+	border-radius: 3px 3px 0px 0px;
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	line-height: 19px;
+	color: #999999;
+	resize: none;
+}
+
+.input[aria-invalid] {
+  	border-color: red;
+}
+
+.button {
+    width: 220px;
+    height: 50px;
+    background: #CC6633;
+    border-radius: 0px 0px 3px 0px;
+    align-self: flex-end;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.button:disabled {
+	opacity: 0.5;
+	cursor: default;
+} */
 
 .commentContent {
     display: flex;
     flex-flow: row wrap;
-    padding-top: 5px;
-}
- .commentContent > * + * {
-    padding-top: 20px;
-}
+    flex-direction: column;
 
-.commentDivider {
-    display: flex;
-    flex-flow: row wrap;
-    padding-right: 12px;
-}
-
-.divider {
-    padding-top: 65px;
-    width: 2px;
-    background-color: #D9D9D9;
-    margin-left: 8px;
-    margin-top: 10px;
 }
 
 .metaData {
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
-    font-size: 10px;
-    line-height: 12px;
+    margin: 5px 0 0 10px;
+}
+
+.textComment {
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
 }
 
 .commentIcon {
 	display: flex;
     flex-flow: row nowrap;
 	cursor: pointer;
+    padding-left: 10px;
 }
 
 .commentIcon > * + * {
@@ -54,17 +107,6 @@
 }
 
 @media all and (min-width: 1024px) {
-    .commentContent {
-        /* flex-basis: 540px; */
-        order: 1;
-        /* margin: 0 0 0 38px; */
-        flex-flow: column-reverse nowrap;
-        justify-content: center;
-    }
-    /* .commentContent > * {
-        flex: 0 0;
-    } */
-
     .metaData {
         justify-content: flex-start;
         font-size: 14px;
@@ -128,8 +170,4 @@
         flex-flow:       column-reverse nowrap;
         justify-content: center;
     }
-
-    /* .commentContent > * {
-        flex: 0 0;
-    } */
 } 

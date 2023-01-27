@@ -38,7 +38,6 @@ export function Post(props: IPost) {
             </div>
             <CommentForm />
             <CommentBlock postId={props.postId}  />
-            
         </div>
     ), node);
 }
