@@ -4,7 +4,7 @@ import { EIcons, Icon } from '../Icons';
 import { EColor, Text } from '../Text';
 import { timePost } from '../../utils/react/timePost';
 import { ReplyForm } from '../ReplyForm';
-// import { CommentForm } from '../CommentForm';
+import { ReplyFormControl } from '../ReplyFormControl';
 
 export interface IUserComment {
 	id: string;
@@ -57,7 +57,7 @@ export function UserComment({data}: IUserCommentProps) {
 							<Text desktopSize={14} tabletSize={14} mobileSize={12} size={12} color={EColor.gray66}> Пожаловаться</Text>
 						</button>
 					</div>	
-					{replyForm && <ReplyForm username={data?.author}/>}
+					{replyForm && <ReplyForm />}
 				</div>
 			</div>
 		</div>		

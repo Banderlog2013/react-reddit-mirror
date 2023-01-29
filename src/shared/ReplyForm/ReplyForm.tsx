@@ -1,14 +1,15 @@
-import React, { FormEvent, useContext, useRef} from 'react';
+import React, { FormEvent, useRef} from 'react';
+import { useUserData} from '../../hooks/useUserData'
 import styles from '../CommentForm/commentForm.css';
 
+// interface IReplyForm {
+// 	username?: string;
+// 	userlink?: string;
+// }
 
-interface IReplyForm {
-	username?: string;
-	userlink?: string;
-}
-
-export function ReplyForm({username}: IReplyForm) {
+export function ReplyForm() {
 	const ref = useRef<HTMLTextAreaElement>(null);
+	const [userData] = useUserData();
 
 	function handleSubmit(event: FormEvent) {
 		event.preventDefault();
@@ -17,7 +18,7 @@ export function ReplyForm({username}: IReplyForm) {
 
   	return (
 		<form className={styles.form} onSubmit={handleSubmit}>
-			<textarea className={styles.input} ref={ref} placeholder={username}/>
+			<textarea className={styles.input} ref={ref} placeholder={`${userData.name}, оставьте свой комментарий`}/>
 			<button type="submit" className={styles.button}>Ответить</button>
 		</form>	
     );
