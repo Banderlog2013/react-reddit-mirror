@@ -88,7 +88,7 @@ export function UserComment({data}: IUserCommentProps) {
 							<Text desktopSize={14} tabletSize={14} mobileSize={12} size={12} color={EColor.gray66}> Пожаловаться</Text>
 						</button>
 					</div>	
-					{replyForm && <ReplyForm />}
+					{replyForm && <ReplyFormControl />}
 					{childComments && childComment([childComments])}
 				</div>
 			</div>
