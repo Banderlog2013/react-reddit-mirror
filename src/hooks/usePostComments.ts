@@ -13,8 +13,9 @@ export function usePostComments(postId: string) {
             }).then((resp) => {
                 const commentsData = resp.data[1].data.children;
                 setComments(commentsData);
-                //console.log(comments)
+                //console.log(commentsData)
             }).catch(console.log);
+
         }
     }, [token, postId])
 

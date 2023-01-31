@@ -8,6 +8,7 @@ export interface ICommentBlockProps {
 
 export function CommentBlock({postId}: ICommentBlockProps) { // 
 	const [comments] = usePostComments(postId);
+	//console.log(comments)
   	return (
 		<>
 			{comments.map((comment: { data: IUserComment; }) => (

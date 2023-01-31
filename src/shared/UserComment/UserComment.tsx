@@ -1,17 +1,33 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './userComment.css';
 import { EIcons, Icon } from '../Icons';
 import { EColor, Text } from '../Text';
 import { timePost } from '../../utils/react/timePost';
 import { ReplyForm } from '../ReplyForm';
 import { ReplyFormControl } from '../ReplyFormControl';
+import { usePostComments } from '../../hooks/usePostComments';
+import { CommentBlock } from '../CommentBlock';
 
 export interface IUserComment {
-	id: string;
+	id?: string;
 	author?: string;
 	created?: number | string | any;
 	body?: string;
+	replies?: { data?: { children: IUserComment[]; }; }; };
+
+export interface IUserCommentProps {
+	data?: IUserComment;
+
 }
+
+export interface IUserComment {
+	data?: {
+		id?: string;
+		author?: string;
+		created?: number | string | any;
+		body?: string;
+		replies?: { data?: { children: IUserComment[]; }; }; };
+	}
 
 export interface IUserCommentProps {
 	data?: IUserComment;
@@ -19,7 +35,22 @@ export interface IUserCommentProps {
 
 export function UserComment({data}: IUserCommentProps) {
 	const [replyForm, setReplyForm] = useState(false);
-  	return (
+	const childComments = data?.replies?.data?.children[0];
+	//console.log(childComments);
+
+	function childComment(childComments: IUserComment[]) {
+		if (childComments != undefined || childComments != null) {
+			return (
+				childComments.map((childComment) => (
+					<UserComment
+						data={childComment.data} key={childComment.data?.id}
+					/>
+				))
+			)
+		}
+	}
+
+	return (
 		
 		<div id={data?.id} className={styles.commentСontainer}>
 			<div>
@@ -27,7 +58,7 @@ export function UserComment({data}: IUserCommentProps) {
 					<Icon name={EIcons.arrow} className={styles.arrow} />
 					<Icon name={EIcons.arrow} className={styles.arrowDown} />
 				</div>
-				<div className={styles.commentDivider}></div>
+				<div className={styles.commentDivider}></div>	
 			</div>
 			<div className={styles.commentContent}>
 				<div className={styles.metaData}>
@@ -58,8 +89,10 @@ export function UserComment({data}: IUserCommentProps) {
 						</button>
 					</div>	
 					{replyForm && <ReplyForm />}
+					{childComments && childComment([childComments])}
 				</div>
 			</div>
+			
 		</div>		
     );
 }
