@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
 import { CommentBlock } from "../CommentBlock";
-import { CommentForm } from "../CommentForm";
+import { CommentFormContainer } from "../CommentFormContainer";
 import styles from './post.css'
 
 interface IPost {
@@ -36,7 +36,7 @@ export function Post(props: IPost) {
                 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis, ipsum voluptatibus! Corrupti, eos! Voluptatem deleniti, voluptatum necessitatibus provident aut dolores minima laborum quidem, velit dignissimos, quaerat quae perferendis architecto magni.</p>
                 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis, ipsum voluptatibus! Corrupti, eos! Voluptatem deleniti, voluptatum necessitatibus provident aut dolores minima laborum quidem, velit dignissimos, quaerat quae perferendis architecto magni.</p>
             </div>
-            <CommentForm />
+            <CommentFormContainer />
             <CommentBlock postId={props.postId}  />
         </div>
     ), node);
