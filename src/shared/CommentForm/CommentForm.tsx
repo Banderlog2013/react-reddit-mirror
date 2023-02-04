@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FormEvent, useContext} from 'react';
+import React, { ChangeEvent, FormEvent } from 'react';
 import styles from '../CommentForm/commentForm.css';
 
 type Props = {

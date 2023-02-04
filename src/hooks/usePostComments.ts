@@ -1,11 +1,11 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from 'axios';
-import { tokenContext } from "../shared/Context/tokenContext";
+import { TokenWrapper } from "../shared/TokenWrapper";
 
 export function usePostComments(postId: string) {
     const [comments, setComments] = useState([]);
-    const token = useContext(tokenContext);
-
+    const token = TokenWrapper()
+    
     useEffect(() => {
         if (token && token.length > 0 && token !== 'undefined' && postId) {
             axios.get(`https://oauth.reddit.com/comments/${postId}`, {

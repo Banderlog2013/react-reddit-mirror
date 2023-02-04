@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
 import { CommentBlock } from "../CommentBlock";
 import { CommentFormContainer } from "../CommentFormContainer";
