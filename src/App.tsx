@@ -7,16 +7,19 @@ import { Content } from "./shared/Content/Content";
 import { CardsList } from "./shared/CardsList";
 import { UserContextProvider } from "./shared/Context/userContext"
 import { PostsContextProvider } from "./shared/Context/postsContext" 
-import { legacy_createStore } from '@reduxjs/toolkit'
+import { Action, applyMiddleware, legacy_createStore, Middleware } from '@reduxjs/toolkit'
 import { composeWithDevTools } from '@redux-devtools/extension';
 import { Provider } from "react-redux";
-import { rootReducer } from "./store";
+import { rootReducer, RootState } from "./store/store";
+import thunk, { ThunkAction } from "redux-thunk";
+import { userToken } from "./utils/react/userToken";
 
-
-export const store = legacy_createStore(rootReducer, composeWithDevTools());
+export const store = legacy_createStore(rootReducer, composeWithDevTools(
+    applyMiddleware(thunk)
+));
 
 export function AppComponent() {
-
+    userToken();
     return (
         <Provider store={store}>
             <UserContextProvider>
@@ -33,8 +36,6 @@ export function AppComponent() {
     );
 }
 
-export const App = hot(() => 
-    <Provider store={store}>
-        <AppComponent />
-    </Provider>
+export const App = hot(() => <AppComponent />
+    
 );

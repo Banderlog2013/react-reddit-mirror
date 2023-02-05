@@ -1,28 +1,35 @@
-import { Reducer, ActionCreator, AnyAction } from '@reduxjs/toolkit'
-import { TokenWrapper } from './shared/TokenWrapper';
-
-const UPDATE_COMMENT = 'UPDATE_COMMENT',
-      SET_TOKEN = 'SET_TOKEN';
+import { Reducer, ActionCreator } from '@reduxjs/toolkit'
 
 export type RootState  = {
     commentText: string,
     token: string;
 }
 
-const initialState: RootState = {
-    commentText: 'Привет Мир!',
-    token: ''
-};
+const UPDATE_COMMENT = 'UPDATE_COMMENT';
+type updateCommentAction = {
+    type: typeof UPDATE_COMMENT;
+    text: string;
+}
 
-export const updateComment: ActionCreator<AnyAction> = (text) => ({
+export const updateComment: ActionCreator<updateCommentAction> = (text) => ({
     type: UPDATE_COMMENT,
     text
 });
 
-export const setToken: ActionCreator<AnyAction> = (token) => ({
+const SET_TOKEN = 'SET_TOKEN';
+type SetTokenAction = {
+    type: typeof SET_TOKEN;
+    token: string;
+}
+export const setToken: ActionCreator<SetTokenAction> = (token) => ({
     type: SET_TOKEN,
     token
 });
+
+const initialState: RootState = {
+    commentText: 'Привет Мир!',
+    token: ''
+};
 
 export const rootReducer: Reducer<RootState> = (state = initialState, action) => {
     switch (action.type) {

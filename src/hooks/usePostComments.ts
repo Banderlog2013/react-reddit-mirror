@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import axios from 'axios';
-import { TokenWrapper } from "../shared/TokenWrapper";
+import { useSelector } from "react-redux";
+import { RootState } from "../store/store";
 
 export function usePostComments(postId: string) {
     const [comments, setComments] = useState([]);
-    const token = TokenWrapper()
+    const token = useSelector<RootState, string>(state => state.token);
     
     useEffect(() => {
         if (token && token.length > 0 && token !== 'undefined' && postId) {
