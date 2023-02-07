@@ -9,7 +9,7 @@ import styles from '../CommentForm/commentForm.css';
 
 export function ReplyForm() {
 	const ref = useRef<HTMLTextAreaElement>(null);
-	const [userData] = useUserData();
+	const {data} = useUserData();
 
 	function handleSubmit(event: FormEvent) {
 		event.preventDefault();
@@ -18,7 +18,7 @@ export function ReplyForm() {
 
   	return (
 		<form className={styles.form} onSubmit={handleSubmit}>
-			<textarea className={styles.input} ref={ref} placeholder={`${userData.name}, оставьте свой комментарий`}/>
+			<textarea className={styles.input} ref={ref} placeholder={`${data.name}, оставьте свой комментарий`}/>
 			<button type="submit" className={styles.button}>Ответить</button>
 		</form>	
     );

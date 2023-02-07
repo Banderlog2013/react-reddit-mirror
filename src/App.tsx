@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import './main.global.css';
 import { hot } from "react-hot-loader/root";
 import { Layout } from "./shared/Layout/Layout";
@@ -10,7 +10,7 @@ import { PostsContextProvider } from "./shared/Context/postsContext"
 import { Action, applyMiddleware, legacy_createStore, Middleware } from '@reduxjs/toolkit'
 import { composeWithDevTools } from '@redux-devtools/extension';
 import { Provider } from "react-redux";
-import { rootReducer, RootState } from "./store/store";
+import { rootReducer, RootState, setToken } from "./store/store";
 import thunk, { ThunkAction } from "redux-thunk";
 import { userToken } from "./utils/react/userToken";
 
@@ -36,6 +36,8 @@ export function AppComponent() {
     );
 }
 
-export const App = hot(() => <AppComponent />
-    
+export const App = hot(() => 
+    <Provider store={store}>
+        <AppComponent />
+    </Provider>
 );

@@ -4,7 +4,7 @@ import { useUserData} from '../../hooks/useUserData'
 
 export function ReplyFormControl() {
 	const [ value, setValue ] = useState('');
-	const [userData] = useUserData();
+	const {data} = useUserData();
 	
 
 	function handleChange(event: ChangeEvent<HTMLTextAreaElement>) {
@@ -18,7 +18,7 @@ export function ReplyFormControl() {
 
   	return (
 		<form className={styles.form} onSubmit={handleSubmit}>
-			<textarea className={styles.input} value={value} onChange={handleChange} placeholder={`${userData.name}, оставьте свой комментарий`}/>
+			<textarea className={styles.input} value={value} onChange={handleChange} placeholder={`${data.name}, оставьте свой комментарий`}/>
 			<button type="submit" className={styles.button}>Коментировать</button>
 		</form>	
     );

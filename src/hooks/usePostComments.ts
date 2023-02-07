@@ -16,8 +16,8 @@ export function usePostComments(postId: string) {
                 setComments(commentsData);
                 //console.log(commentsData)
             }).catch(console.log);
-
         }
+
     }, [token, postId])
 
     return [comments];

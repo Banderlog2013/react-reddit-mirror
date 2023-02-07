@@ -1,25 +1,18 @@
 import { useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux";
 import { store } from "../../App";
-import { setToken } from "../../store/store";
+import { RootState, setToken } from "../../store/store";
 
 
 
 export function userToken() {
-    // const token = useSelector<RootState, string>(state => state.token);
-    // const dispatch = useDispatch();
-    // useEffect(() => {
-    //     if (window.__token__) {
-    //         dispatch(setToken(window.__token__));
-    //     }
-    // }, [dispatch]);
-
-    // return token
-
+    const token = useSelector<RootState, string>(state => state.token);
+    //const dispatch = useDispatch();
     useEffect(() => {
-        const token = localStorage.getItem('token') || window.__token__;
-        store.dispatch(setToken(token));
-        if (token) {
-            localStorage.setItem('token', token);
+        if (window.__token__) {
+            store.dispatch(setToken(window.__token__));
         }
-    }, [])  
+    }, []);
+
+    return token
 }
