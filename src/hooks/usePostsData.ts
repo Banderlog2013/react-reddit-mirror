@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from 'axios';
 import { useSelector } from "react-redux";
-import { RootState } from "../store/store";
+import { RootState } from "../store/reducer";
 
 export function usePostsData() {
     const [posts, setPosts] = useState([]);

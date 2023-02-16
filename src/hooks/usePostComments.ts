@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from 'axios';
 import { useSelector } from "react-redux";
-import { RootState } from "../store/store";
+import { RootState } from "../store/reducer";
 
 export function usePostComments(postId: string) {
     const [comments, setComments] = useState([]);

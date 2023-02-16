@@ -1,6 +1,6 @@
 import { Action, ActionCreator, ThunkAction } from "@reduxjs/toolkit";
 import axios from "axios";
-import { RootState } from "../store";
+import { RootState } from "../reducer";
 
 export const ME_REQUEST = 'ME_REQUEST';
 export type MeRequestAction = {

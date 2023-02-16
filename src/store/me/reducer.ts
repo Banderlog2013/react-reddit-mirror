@@ -1,7 +1,6 @@
 import { Reducer } from "react";
 import { IUserData, MeRequestAction, MeRequestErrorAction, MeRequestSuccessAction, ME_REQUEST, ME_REQUEST_ERROR, ME_REQUEST_SUCCESS } from "./action";
 
-
 export type MeState = {
     loading: boolean;
     error: string;
