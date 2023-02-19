@@ -21,8 +21,7 @@ export function CommentForm() {
 		return () => subscription.unsubscribe();
 	}, [watch]);
 
-	
-  	return (
+	return (
 		<form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
 			<textarea 
 				{...register('commentText', {
