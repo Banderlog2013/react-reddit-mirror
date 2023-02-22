@@ -1,5 +1,18 @@
-@media all and (min-width: 1024px) {
-    .cardsList {
-      padding: 40px 0;
-    }
+.buttonDownload {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0 auto 100px auto;
+    width: 220px;
+    height: 50px;
+    background: #CC6633;
+    border-radius: 0px 0px 3px 0px;
+    align-self: flex-end;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+    color: #FFFFFF;
 }

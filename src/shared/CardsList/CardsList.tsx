@@ -15,7 +15,6 @@ export function CardsList() {
 	const [noMorePosts, setNoMorePosts] = useState(false);
 
 	useEffect(() => {
-
 		async function load() {
 			setLoading(true);
 			setErrorLoading('');
@@ -27,10 +26,8 @@ export function CardsList() {
 					limit: 10,
 					after: nextAfter,
 				}
-				
 			});
-				// проверяем, есть ли новые посты
-				if (nextAfter === after) {
+				if (nextAfter === after || posts.length == 10) {
 					setNoMorePosts(true);
 				} else {
 					setNextAfter(after);
@@ -43,14 +40,14 @@ export function CardsList() {
 		}
 
 		const observer = new IntersectionObserver((entries) => {
-			if (entries[0].isIntersecting) {
+			if (entries[0].isIntersecting && !noMorePosts) {
 				load();
 			}
 		}, {
 			rootMargin: '10px',
 		});
 
-		if (bottonOfList.current && !noMorePosts) {
+		if (bottonOfList.current) {
 			observer.observe(bottonOfList.current);
 		} else if (bottonOfList.current && noMorePosts) {
 			observer.unobserve(bottonOfList.current);
@@ -63,7 +60,34 @@ export function CardsList() {
 		}
 
 	}, [bottonOfList.current, nextAfter, token])
-  
+
+	const handleLoadMore = () => {
+		async function loadMore() {
+			setLoading(true);
+			setErrorLoading('');
+
+			try {
+				const { data: { data: { after, children }} } = await axios.get('https://oauth.reddit.com/rising/', {
+				headers: { 'Authorization': `bearer ${token}` },
+				params: {
+					limit: 20,
+					after: nextAfter,
+				}
+			});
+				if (nextAfter === after) {
+					setNoMorePosts(true);
+				} else {
+					setNextAfter(after);
+					setPosts(prevChildren => prevChildren.concat(...children));
+				}
+			} catch (error) {
+				setErrorLoading(String(error));
+			}
+			setLoading(false);
+		}
+		loadMore();
+	};
+	
 	return (
 		<ul className={styles.cardsList}>
 			{posts.length === 0 && !loading && !errorLoading && (
@@ -83,6 +107,11 @@ export function CardsList() {
 			{errorLoading && (
 				<div role='alert' style={{textAlign: 'center'}}>{errorLoading}</div>
 			)}
+
+			{posts.length % 20 === 0 && posts.length !== 0 && !loading && !errorLoading && (
+				<button onClick={handleLoadMore} className={styles.buttonDownload}>Загрузить еще</button>
+			)}
 		</ul>
 	);
 }
+
