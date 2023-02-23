@@ -61,31 +61,50 @@ export function CardsList() {
 
 	}, [bottonOfList.current, nextAfter, token])
 
-	const handleLoadMore = () => {
-		async function loadMore() {
-			setLoading(true);
-			setErrorLoading('');
+	async function handleLoadMore() {
+		setLoading(true);
+		setErrorLoading('');
 
-			try {
-				const { data: { data: { after, children }} } = await axios.get('https://oauth.reddit.com/rising/', {
-				headers: { 'Authorization': `bearer ${token}` },
-				params: {
-					limit: 20,
-					after: nextAfter,
-				}
-			});
-				if (nextAfter === after) {
-					setNoMorePosts(true);
-				} else {
-					setNextAfter(after);
-					setPosts(prevChildren => prevChildren.concat(...children));
-				}
-			} catch (error) {
-				setErrorLoading(String(error));
+		try {
+			const { data: { data: { after, children }} } = await axios.get('https://oauth.reddit.com/rising/', {
+			headers: { 'Authorization': `bearer ${token}` },
+			params: {
+				limit: 20,
+				after: nextAfter,
 			}
-			setLoading(false);
+		});
+			if (nextAfter === after) {
+				setNoMorePosts(true);
+			} else {
+				setNextAfter(after);
+				setPosts(prevChildren => prevChildren.concat(...children));
+			}
+		} catch (error) {
+			setErrorLoading(String(error));
 		}
-		loadMore();
+		setLoading(false);
+		console.log(posts.length);
+
+		const observer = new IntersectionObserver((entries) => {
+			if (entries[0].isIntersecting && !noMorePosts) {
+				handleLoadMore();
+			}
+		}, {
+			rootMargin: '10px',
+		});
+
+		if (bottonOfList.current) {
+			observer.observe(bottonOfList.current);
+		} else if (bottonOfList.current && noMorePosts) {
+			observer.unobserve(bottonOfList.current);
+		}
+
+		return () => {
+			if (bottonOfList.current) {
+				observer.unobserve(bottonOfList.current);
+			}
+		}
+
 	};
 	
 	return (
@@ -108,7 +127,7 @@ export function CardsList() {
 				<div role='alert' style={{textAlign: 'center'}}>{errorLoading}</div>
 			)}
 
-			{posts.length % 20 === 0 && posts.length !== 0 && !loading && !errorLoading && (
+			{posts.length % 20 === 0 && posts.length !== 0 && !loading && !errorLoading &&(
 				<button onClick={handleLoadMore} className={styles.buttonDownload}>Загрузить еще</button>
 			)}
 		</ul>
