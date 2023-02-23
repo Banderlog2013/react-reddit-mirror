@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import './main.global.css';
 import { hot } from "react-hot-loader/root";
 import { Layout } from "./shared/Layout/Layout";
@@ -13,29 +13,51 @@ import { Provider } from "react-redux";
 import { rootReducer } from "./store/reducer";
 import thunk from "redux-thunk";
 import { getCode } from "./utils/react/getCode";
+import { BrowserRouter, Route } from "react-router-dom";
+import { Post } from "./shared/Post";
 
 export const store = legacy_createStore(rootReducer, composeWithDevTools(
     applyMiddleware(thunk)
 ));
 
-export function AppComponent() {
+export interface ITitleProps {
+    title?: string;
+    postId: string;
+}
+
+export function AppComponent({postId}: ITitleProps) {
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
     getCode();
+
+
     return (
-        <UserContextProvider>
-            <Layout>
-                <Header/>
-                    <Content>
-                        <PostsContextProvider>
-                            <CardsList />
-                        </PostsContextProvider>
-                    </Content>    
-            </Layout>
-        </UserContextProvider>     
+        <>
+            {mounted && (
+                <BrowserRouter>
+                    <Layout>
+                        <Header/>
+                            <Content>
+                                <PostsContextProvider>
+                                    <CardsList />
+                                        <Route path="/posts/:id">
+                                            <Post postId={postId}  />
+                                        </Route>
+                                </PostsContextProvider>
+                            </Content>    
+                    </Layout>
+                </BrowserRouter>
+            )}
+        </>
     );
 }
 
 export const App = hot(() => 
     <Provider store={store}>
-        <AppComponent />
+        <AppComponent postId={""} />
     </Provider>
 );

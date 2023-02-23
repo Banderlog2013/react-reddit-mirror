@@ -1,20 +1,23 @@
 import React, { useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
+import { useHistory } from "react-router-dom";
 import { CommentBlock } from "../CommentBlock";
 import { CommentFormContainer } from "../CommentFormContainer";
 import styles from './post.css'
 
-interface IPost {
+export interface IPost {
     onClose?: () => void;
     postId: string;
 } 
 
 export function Post(props: IPost) {
     const ref = useRef<HTMLDivElement>(null);
+    const history = useHistory();
+
     useEffect(() => {
         function handleClick(event: MouseEvent) {
             if (event.target instanceof Node && !ref.current?.contains(event.target)) {
-                props.onClose?.();
+                history.push('/');
             }
         }
 
