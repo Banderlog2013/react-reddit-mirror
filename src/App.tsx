@@ -13,8 +13,9 @@ import { Provider } from "react-redux";
 import { rootReducer } from "./store/reducer";
 import thunk from "redux-thunk";
 import { getCode } from "./utils/react/getCode";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Post } from "./shared/Post";
+import { Redirect } from "react-router-dom";
 
 export const store = legacy_createStore(rootReducer, composeWithDevTools(
     applyMiddleware(thunk)
@@ -44,9 +45,16 @@ export function AppComponent({postId}: ITitleProps) {
                             <Content>
                                 <PostsContextProvider>
                                     <CardsList />
-                                        <Route path="/posts/:id">
-                                            <Post postId={postId}  />
-                                        </Route>
+                                        <Switch>
+                                            <Redirect exact from="/" to="/posts" />
+                                            <Redirect exact from="/auth" to="/posts" />
+                                            <Route path="/posts/:id">
+                                                <Post postId={postId}  />
+                                            </Route>
+                                            <Route path="*">
+                                                <p style={{'textAlign': 'center', 'fontWeight': 'bold', 'fontSize': '24px'}} >404 — страница не найдена</p>
+                                            </Route>
+                                        </Switch>
                                 </PostsContextProvider>
                             </Content>    
                     </Layout>
