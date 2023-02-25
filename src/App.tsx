@@ -5,7 +5,6 @@ import { Layout } from "./shared/Layout/Layout";
 import { Header } from "./shared/Header/Header";
 import { Content } from "./shared/Content/Content";
 import { CardsList } from "./shared/CardsList";
-import { UserContextProvider } from "./shared/Context/userContext"
 import { PostsContextProvider } from "./shared/Context/postsContext" 
 import { applyMiddleware, legacy_createStore } from '@reduxjs/toolkit'
 import { composeWithDevTools } from '@redux-devtools/extension';
@@ -13,9 +12,10 @@ import { Provider } from "react-redux";
 import { rootReducer } from "./store/reducer";
 import thunk from "redux-thunk";
 import { getCode } from "./utils/react/getCode";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Post } from "./shared/Post";
 import { Redirect } from "react-router-dom";
+import { Page404 } from "./shared/Page404";
 
 export const store = legacy_createStore(rootReducer, composeWithDevTools(
     applyMiddleware(thunk)
@@ -35,11 +35,10 @@ export function AppComponent({postId}: ITitleProps) {
 
     getCode();
 
-
     return (
         <>
             {mounted && (
-                <BrowserRouter>
+                <Router>
                     <Layout>
                         <Header/>
                             <Content>
@@ -48,17 +47,17 @@ export function AppComponent({postId}: ITitleProps) {
                                         <Switch>
                                             <Redirect exact from="/" to="/posts" />
                                             <Redirect exact from="/auth" to="/posts" />
-                                            <Route path="/posts/:id">
-                                                <Post postId={postId}  />
+                                            <Route path="/posts/:id" >
+                                                <Post postId={postId} />
                                             </Route>
                                             <Route path="*">
-                                                <p style={{'textAlign': 'center', 'fontWeight': 'bold', 'fontSize': '24px'}} >404 — страница не найдена</p>
+                                                <Page404 />
                                             </Route>
                                         </Switch>
                                 </PostsContextProvider>
                             </Content>    
                     </Layout>
-                </BrowserRouter>
+                </Router>
             )}
         </>
     );

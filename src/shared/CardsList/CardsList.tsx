@@ -4,6 +4,7 @@ import { Card, IPostData } from './Card';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/reducer';
+import { Page404 } from '../Page404';
 
 export function CardsList() {
 	const token = useSelector<RootState>(state => state.token)
@@ -108,7 +109,7 @@ export function CardsList() {
 	};
 	
 	return (
-		<ul className={styles.cardsList}>
+			<ul className={styles.cardsList}>
 			{posts.length === 0 && !loading && !errorLoading && (
 				<div role='alert' style={{textAlign: 'center'}}>Нет ни одного поста</div>
 			)}
@@ -119,11 +120,11 @@ export function CardsList() {
 
 			<div ref={bottonOfList}></div>
 
-			{loading && (
+			{loading && !Page404 &&(
 				<div role='alert' style={{textAlign: 'center'}}>Загрузка...</div>
 			)}
 
-			{errorLoading && (
+			{errorLoading && !Page404 && !loading && (
 				<div role='alert' style={{textAlign: 'center'}}>{errorLoading}</div>
 			)}
 
