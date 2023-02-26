@@ -11,7 +11,7 @@
 		"predeploy": "npm run build:dev",
 		"deploy": "gh-pages -d build:dev",
 		"build:dev": "NODE_ENV=development webpack --config webpack.config.js",
-		"build": "[my-react] build --output public",
+		"build": "build --output public",
 		"dev": "NODE_ENV=development CLIENT_ID=Q87_eZMuvXUy0_wn_O6rPw node ./bin/dev.js",
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"start": " CLIENT_ID=Q87_eZMuvXUy0_wn_O6rPw SECRET=6SHkMWJ_yz1PBl5DN3CBQlb-xp0Hhg node ./dist/server/server.js"
