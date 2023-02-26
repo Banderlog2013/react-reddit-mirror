@@ -5,13 +5,13 @@
 	"description": "",
 	"main": "webpack.config.js",
 	"engines": {
-		"node": "16.x"
+		"node": "18.x"
 	},
 	"scripts": {
 		"predeploy": "npm run build:dev",
 		"deploy": "gh-pages -d build:dev",
 		"build:dev": "NODE_ENV=development webpack --config webpack.config.js",
-		"build": "NODE_ENV=production webpack --config webpack.config.js",
+		"build": "[my-react] build --output public",
 		"dev": "NODE_ENV=development CLIENT_ID=Q87_eZMuvXUy0_wn_O6rPw node ./bin/dev.js",
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"start": " CLIENT_ID=Q87_eZMuvXUy0_wn_O6rPw SECRET=6SHkMWJ_yz1PBl5DN3CBQlb-xp0Hhg node ./dist/server/server.js"
@@ -62,6 +62,7 @@
 		"ts-jest": "^28.0.7",
 		"ts-loader": "^6.2.1",
 		"typescript": "4.6.4",
+		"vercel": "^28.16.7",
 		"webpack": "^4.42.0",
 		"webpack-cli": "^3.3.11",
 		"webpack-dev-middleware": "^3.7.3",
