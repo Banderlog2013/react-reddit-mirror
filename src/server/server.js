@@ -3,17 +3,30 @@ import ReactDOM from "react-dom/server";
 import { indexTemplate } from "./indexTemplate";
 import { App } from "../App";
 import axios from "axios";
+import compression from "compression";
+import helmet from "helmet";
+
+const PORT = process.env.PORT || 3000;
+const IS_DEV = process.env.NODE_ENV !== 'production';
 
 const app = express();
+	
+if (!IS_DEV) {
+	app.use(compression());
+	app.use(helmet({
+		contentSecurityPolicy: false, // отключение заголовков безопасноти
+	}));
+}
+
 
 app.use("/static", express.static("./dist/client"));
 
 app.get("/auth", (req, res) => {
 // 	axios.post(
 // 		'https://www.reddit.com/api/v1/access_token',
-// 		`grant_type=authorization_code&code=${req.query.code}&redirect_uri=http://localhost:3000/auth`,
+// 		`grant_type=authorization_code&code=${req.query.code}&redirect_uri=http://localhost:3000/auth`, //указать url приложения
 // 		{ 
-// 		auth: { username: process.env.CLIENT_ID, password: '6SHkMWJ_yz1PBl5DN3CBQlb-xp0Hhg' },
+// 		auth: { username: process.env.CLIENT_ID, password: process.env.SECRET },
 // 		headers: { 'Content-type': 'application/x-www-form-urlencoded' },
 // 		}
 // 	).then(({ data }) => {
@@ -28,6 +41,6 @@ app.get("*", (req, res) => {
 	res.send(indexTemplate(ReactDOM.renderToString(App())));
 });
 
-app.listen(3000, () => {
-  	console.log("server started on port http://localhost:3000");
+app.listen(PORT, () => {
+  	console.log(`server started on port http://localhost:${PORT}`);
 });

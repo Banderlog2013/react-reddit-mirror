@@ -1,14 +1,16 @@
 @media all and (min-width: 1024px) {
     .header {
-      display: flex;
-      flex-flow: row nowrap;
-      align-items: center;
-      padding: 40px;
+		display: flex;
+		flex-flow: row nowrap;
+		align-items: center;
+		padding: 40px;
+		border: 2px solid #CC6633;
+		cursor: pointer;
     }
-  }
+}
   
   @media all and (min-width: 1540px) {
     .header {
-      padding: 67px 0;
+      	padding: 67px 0;
     }
-  }
+}

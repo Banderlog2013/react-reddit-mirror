@@ -3,6 +3,6 @@ import styles from './threadTitle.css';
 
 export function ThreadTitle() {
   return (
-    <h1 className={styles.threadTitle}>Header</h1>
+    <a href='https://www.reddit.com/' className={styles.threadTitle}>React Reddit Mirror</a>
   );
 }
